@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <div>
+        {%for message in messages%}
+        <p>{{message}}</p>
+        {%endfor%}
+    </div>
+    <br>
+    <b>
+    <div>
+    <p>Register</p>
+        <form action="{% url 'auth:register' %}" method="POST">
+            {% csrf_token %}
+            Name: <input type="text" name="name" placeholder="Enter Your Name"> <br>
+            Alias: <input type="text" name="alias"placeholder="Enter Alias"><br>
+            Email: <input type="text" name="email" placeholder="Enter Email"><br>
+            Password: <input type="text" name="password" placeholder="Enter Password"><span><font size='2'><i>*Password should be at least 8 characters</i></font></span><br>
+            Password Confirmation: <input type="text" name="password_confirmation" placeholder="Re-enter Password"><br>
+            Date of Birth:  <input type="date" name="dob" placeholder="mm/dd/yyyy"><br>
+            <input type= 'submit' value='Register'><br>
+        </form>
+        <br>
+        <p>Login<p
+        <form action="{% url 'auth:login' %}" method="POST"><br>
+            {% csrf_token %}
+            Email: <input type="text" name="email" placeholder="Enter Email"><br>
+            Password: <input type="text" name="password" placeholder="Enter Password"><br>
+        <input type= 'submit' value='Login'><br>
+    </div>
+</body>
+</html>

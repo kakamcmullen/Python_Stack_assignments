@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Pokes</title>
+    </head>
+    <body>
+        <a href="{% url 'auth:logout' %}">Logout</a>
+        {%for message in messages%}
+            <p>{{message}}</p>
+        {%endfor%}
+        <p> People you may want to poke:</p>
+
+        <table table border="1">
+            <tr>
+                <th align="left">Name</th>
+                <th align="left">Alias</th>
+                <th align="left">Email Address</th>
+                <th align="left">Poke History</th>
+                <th align="left">Action</th>
+            </tr>
+                {% for user in users %}
+                    <tr>
+                        <td align="left">{{user.name}}</td>
+                        <td align="left">{{user.alias}}</td>
+                        <td align="left">{{user.email}}</td>
+                        <td align="left">{{count}}</td>
+                        <td align="left"><a href="poke/{{user.id}}"><input type="button" value="Poke!" name="poke"></a></td>
+                    </tr> 
+                {% endfor %}
+        </table>  
+    </body>
+</html>

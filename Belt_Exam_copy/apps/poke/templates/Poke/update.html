@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update Appointment</title>
+</head>
+<body>
+     <a href="{% url 'appointments:appts' %}">Dashboard</a>
+        <a href="{% url 'auth:logout' %}">Logout</a>
+        <h2>Update Appointment</h2>
+        {% for message in messages %}
+            <p><b>{{message}}</b></p>
+        {% endfor %}
+        <form action="{% url 'appointments:update' appt_id=appt.id %}" method="post">
+            {% csrf_token %}
+            <label for="update_task">
+                Task:<input type="text" value="{{appt.task}}" name="update_task">
+            </label>
+            <label for="update_status">
+                Status:<select value="{{appt.status}}" name="update_status">
+                    <option value="Done">Done</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Missed">Missed</option>
+                </select>
+            </label>
+            <label for="update_date">
+                Date:<input type="date" value="{{appt.date}}" name="update_date">
+            </label>
+            <label for="update_time">
+                Time:<input type="time" value="{{appt.time}}" name="update_time">
+            </label>
+            <button>Update</button>
+        </form>
+    </body>
+</html>
