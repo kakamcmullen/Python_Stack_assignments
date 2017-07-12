@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration</title>
+</head>
+<body>
+    <h1>Registration</h1>
+    <div>
+        {%for message in messages%}
+        <p>{{message}}</p>
+        {%endfor%}
+    </div>
+    <br>
+    <b>
+    <div>
+        <form action="{% url 'auth:register' %}" method="POST">
+            {% csrf_token %}
+            First Name: <input type="text" name="first_name" placeholder="Enter First Name"> <br>
+            Last Name: <input type="text" name="last_name"placeholder="Enter Last Name"><br>
+            Email: <input type="text" name="email" placeholder="Enter Email"><br>
+            Password: <input type="text" name="password" placeholder="Enter Password"><small> Must be at least 8 charachters long</small><br>
+            Password Confirmation: <input type="text" name="password_confirmation" placeholder="Re-enter Password"><br>
+            <input type= 'submit' value='submit'><br>
+        </form>
+        <br>
+        <h1>Login</h1>
+        <form action="{% url 'auth:login' %}" method="POST"><br>
+            {% csrf_token %}
+            Email: <input type="text" name="email" placeholder="Enter Email"><br>
+            Password: <input type="text" name="password" placeholder="Enter Password"><br>
+        <input type= 'submit' value='submit'><br>
+    </div>
+</body>
+</html>
